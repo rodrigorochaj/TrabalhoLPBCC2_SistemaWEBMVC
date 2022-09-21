@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Produtos_Sitio.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
