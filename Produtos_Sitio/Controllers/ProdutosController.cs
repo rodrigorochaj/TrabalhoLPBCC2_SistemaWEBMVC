@@ -53,7 +53,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,descricao,peso,valor")] Produto produto)
+        public async Task<IActionResult> Create([Bind("id,descricao,peso,valor,quantidade")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,descricao,peso,valor")] Produto produto)
+        public async Task<IActionResult> Edit(int id, [Bind("id,descricao,peso,valor,quantidade")] Produto produto)
         {
             if (id != produto.id)
             {

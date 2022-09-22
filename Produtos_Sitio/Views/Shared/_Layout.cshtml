@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Produtos_Sitio</title>
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Produtos_Sitio.styles.css" asp-append-version="true" />
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Produtos_Sitio</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sitio Paraiso</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,59 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Clientes
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Listar</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Clientes" asp-action="Index">Cadastrar</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Produtos
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Listar</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Produtos" asp-action="Index">Cadastrar</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Vendas
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Vendas" asp-action="Index">Listar</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Vendas" asp-action="Index">Cadastrar</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Entregas
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Entregas" asp-action="Index">Listar</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Entregas" asp-action="Index">Cadastrar</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Usuários
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Listar</a></li>
+                                    <li><a class="nav-link text-dark" asp-area="" asp-controller="Usuarios" asp-action="Index">Cadastrar</a></li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>

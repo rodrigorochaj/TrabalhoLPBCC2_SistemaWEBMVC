@@ -45,6 +45,17 @@ namespace Produtos_Sitio.Controllers
         // GET: Entregas/Create
         public IActionResult Create()
         {
+            var conclusao = Enum.GetValues(typeof(Conclusao))
+                .Cast<Conclusao>()
+                .Select(e => new SelectListItem
+                {
+                    Value = e.ToString(),
+                    Text = e.ToString()
+                });
+
+            ViewBag.bagConclusao = conclusao;
+
+
             return View();
         }
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Produtos_Sitio.Models;
 
@@ -11,9 +12,10 @@ using Produtos_Sitio.Models;
 namespace Produtos_Sitio.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20220922171901_Correcoes2")]
+    partial class Correcoes2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,6 +144,9 @@ namespace Produtos_Sitio.Migrations
                     b.Property<DateTime>("data")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("entregaid")
+                        .HasColumnType("int");
+
                     b.Property<int>("produtoid")
                         .HasColumnType("int");
 
@@ -151,6 +156,8 @@ namespace Produtos_Sitio.Migrations
                     b.HasKey("id");
 
                     b.HasIndex("clienteid");
+
+                    b.HasIndex("entregaid");
 
                     b.HasIndex("produtoid");
 
@@ -165,6 +172,12 @@ namespace Produtos_Sitio.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Produtos_Sitio.Models.Entrega", "entrega")
+                        .WithMany()
+                        .HasForeignKey("entregaid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Produtos_Sitio.Models.Produto", "produto")
                         .WithMany()
                         .HasForeignKey("produtoid")
@@ -172,6 +185,8 @@ namespace Produtos_Sitio.Migrations
                         .IsRequired();
 
                     b.Navigation("cliente");
+
+                    b.Navigation("entrega");
 
                     b.Navigation("produto");
                 });

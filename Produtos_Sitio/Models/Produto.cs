@@ -9,7 +9,7 @@ namespace Produtos_Sitio.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "ID Produto")]
+        [Display(Name = "Cod. Produto")]
         public int id { get; set; }
 
         [StringLength(40)]
@@ -25,5 +25,9 @@ namespace Produtos_Sitio.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [Display(Name = "Valor")]
         public float valor { get; set; }
+
+        [Display(Name = "Quantidade")]
+        [Range(1,100, ErrorMessage = "Campo 'Quantidade' é obrigatório.")]
+        public float quantidade { get; set; }
     }
 }

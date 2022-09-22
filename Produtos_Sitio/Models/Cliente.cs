@@ -9,7 +9,7 @@ namespace Produtos_Sitio.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "ID Cliente")]
+        [Display(Name = "Cod. Cliente")]
         public int id { get; set; }
 
         [StringLength(40)]

@@ -1,12 +1,12 @@
 ﻿@model Produtos_Sitio.Models.Cliente
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Cliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div>
-    <a asp-action="Index" class="btn btn-primary" style="margin-bottom:15px;">Voltar</a>
+<div class="btn-topo">
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
 </div>
 <h1>Editar Cliente</h1>
 
@@ -40,5 +40,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

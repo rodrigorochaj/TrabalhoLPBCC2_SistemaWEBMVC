@@ -20,3 +20,11 @@ body {
 a {
     text-decoration: none;
 }
+
+.btn-topo {
+    margin-bottom: 20px;
+}
+
+.dropdown {
+    margin-left: 15px;
+}

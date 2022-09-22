@@ -10,18 +10,23 @@ namespace Produtos_Sitio.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "ID Venda")]
+        [Display(Name = "Cod. Venda")]
         public int id { get; set; }
 
-        [StringLength(40)]
-        [Required(ErrorMessage = "Campo 'Cliente' é obrigatório.")]
         [Display(Name = "Cliente")]
         public Cliente cliente { get; set; }
+        [Display(Name = "Cliente")]
+        public int clienteid { get; set; }
 
-        [StringLength(40)]
-        [Required(ErrorMessage = "Campo 'Produto' é obrigatório.")]
         [Display(Name = "Produto")]
         public Produto produto { get; set; }
+        [Display(Name = "Produto")]
+        public int produtoid { get; set; }
+
+        /*[StringLength(40)]
+        [Required(ErrorMessage = "Campo 'Cod. Entrega' é obrigatório.")]
+        [Display(Name = "Cod. Entrega")]
+        public Entrega entrega { get; set; }*/
 
         [Required(ErrorMessage = "Campo 'Data' é obrigatório.")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
@@ -36,7 +41,5 @@ namespace Produtos_Sitio.Models
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [Display(Name = "Total")]
         public float Total { get; set; }
-
-        public ICollection<Entrega> entrega { get; set; }
     }
 }

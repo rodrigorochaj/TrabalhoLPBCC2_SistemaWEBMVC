@@ -1,15 +1,15 @@
 ﻿@model IEnumerable<Produtos_Sitio.Models.Cliente>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Clientes</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Criar Novo Cliente</a>
-</p>
+<div class="btn-topo">
+    <a asp-action="Create" class="btn btn-primary">Novo Cliente</a>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -26,23 +26,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endereco)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.endereco)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Detalhes</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

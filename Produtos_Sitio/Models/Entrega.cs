@@ -12,7 +12,7 @@ namespace Produtos_Sitio.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "ID Entrega")]
+        [Display(Name = "Cod. Entrega")]
         public int id { get; set; }
 
         [Required(ErrorMessage = "Campo 'Data da Entrega' é obrigatório.")]
@@ -25,8 +25,6 @@ namespace Produtos_Sitio.Models
 
         [Required(ErrorMessage = "Campo 'Entregue' é obrigatório.")]
         public Conclusao entregue { get; set; }
-
-        public ICollection<Venda> vendas { get; set; }
     }
 
 }

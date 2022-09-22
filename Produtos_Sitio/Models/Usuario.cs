@@ -8,8 +8,12 @@ namespace Produtos_Sitio.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name ="ID Usuário")]
+        [Display(Name ="Cod. Usuário")]
         public int id { get; set; }
+
+        [StringLength(40)]
+        [Display(Name = "Apelido")]
+        public string apelido { get; set; }
 
         [StringLength(20)]
         [Required(ErrorMessage = "Campo 'Login' é obrigatório.")]

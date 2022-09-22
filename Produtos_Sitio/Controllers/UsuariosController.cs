@@ -53,7 +53,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,login,password")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("id,apelido,login,password")] Usuario usuario)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,login,password")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("id,apelido,login,password")] Usuario usuario)
         {
             if (id != usuario.id)
             {

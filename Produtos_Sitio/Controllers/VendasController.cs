@@ -21,7 +21,8 @@ namespace Produtos_Sitio.Controllers
         // GET: Vendas
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Vendas.ToListAsync());
+            var contexto = _context.Vendas.Include(v => v.cliente).Include(v => v.produto);
+            return View(await contexto.ToListAsync());
         }
 
         // GET: Vendas/Details/5
@@ -33,6 +34,8 @@ namespace Produtos_Sitio.Controllers
             }
 
             var venda = await _context.Vendas
+                .Include(v => v.cliente)
+                .Include(v => v.produto)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (venda == null)
             {
@@ -45,6 +48,8 @@ namespace Produtos_Sitio.Controllers
         // GET: Vendas/Create
         public IActionResult Create()
         {
+            ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "nome");
+            ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao");
             return View();
         }
 
@@ -53,7 +58,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,data,quantidade,Total")] Venda venda)
+        public async Task<IActionResult> Create([Bind("id,clienteid,produtoid,data,quantidade,Total")] Venda venda)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +66,8 @@ namespace Produtos_Sitio.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "nome", venda.clienteid);
+            ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao", venda.produtoid);
             return View(venda);
         }
 
@@ -77,6 +84,8 @@ namespace Produtos_Sitio.Controllers
             {
                 return NotFound();
             }
+            ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "endereco", venda.clienteid);
+            ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao", venda.produtoid);
             return View(venda);
         }
 
@@ -85,7 +94,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,data,quantidade,Total")] Venda venda)
+        public async Task<IActionResult> Edit(int id, [Bind("id,clienteid,produtoid,data,quantidade,Total")] Venda venda)
         {
             if (id != venda.id)
             {
@@ -112,6 +121,8 @@ namespace Produtos_Sitio.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "endereco", venda.clienteid);
+            ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao", venda.produtoid);
             return View(venda);
         }
 
@@ -124,6 +135,8 @@ namespace Produtos_Sitio.Controllers
             }
 
             var venda = await _context.Vendas
+                .Include(v => v.cliente)
+                .Include(v => v.produto)
                 .FirstOrDefaultAsync(m => m.id == id);
             if (venda == null)
             {
