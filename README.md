@@ -9,7 +9,7 @@ Feito com base em um problema real, onde minha família vende produtos caseiros 
 O sistema está bem personalizado para armazenar apenas os dados realmente necessários e também para simplificar.
 <br>
 <br>
-<a href="https://trello.com/b/37ZKlTR0/projeto" _blank>Trello</a>
+<a href="https://trello.com/b/37ZKlTR0/projeto" target="_blank">Trello</a>
 <br>
 Modelagem Banco de Dados
 <br>
