@@ -5,6 +5,5 @@ Trabalho de Linguagem de Programação - 2 BCC - Sistema WEB MVC - Vendas de Pro
 Modelagem Banco de Dados
 
 <div>
-  <img src="https://user-images.githubusercontent.com/100471910/192065548-ddbb4a84-55c4-4c63-aa9d-6a1c77ab5f7b.png
- " width="700px">
+  <img src="https://user-images.githubusercontent.com/100471910/192065954-8c5bd758-f34b-40a5-98e6-0232b4109ec7.png" width="700px">
 </div>
