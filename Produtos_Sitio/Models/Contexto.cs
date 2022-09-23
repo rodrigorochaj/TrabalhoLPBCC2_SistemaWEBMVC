@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Produtos_Sitio.Models;
+using System.Configuration;
 
 namespace Produtos_Sitio.Models
 {

@@ -1,13 +1,15 @@
 ﻿@model Produtos_Sitio.Models.Venda
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Venda - Cadastrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="btn-topo">
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>
+<h1>Cadastrar Venda</h1>
 
-<h4>Venda</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,23 +30,24 @@
             </div>
             <div class="form-group">
                 <label asp-for="quantidade" class="control-label"></label>
-                <input asp-for="quantidade" id="quantidade_venda" class="form-control" />
+                <input asp-for="quantidade" class="form-control" />
                 <span asp-validation-for="quantidade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" value=""/>
+                <input asp-for="Total" class="form-control" />
                 <span asp-validation-for="Total" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="pago" class="control-label"></label>
+                <select asp-for="pago" class="form-control" asp-items="ViewBag.bagConclusao"></select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

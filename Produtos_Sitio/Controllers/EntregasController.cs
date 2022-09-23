@@ -54,8 +54,6 @@ namespace Produtos_Sitio.Controllers
                 });
 
             ViewBag.bagConclusao = conclusao;
-
-
             return View();
         }
 
@@ -64,7 +62,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,data_entrega,pago,entregue")] Entrega entrega)
+        public async Task<IActionResult> Create([Bind("id,data_entrega,entregue")] Entrega entrega)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +94,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,data_entrega,pago,entregue")] Entrega entrega)
+        public async Task<IActionResult> Edit(int id, [Bind("id,data_entrega,entregue")] Entrega entrega)
         {
             if (id != entrega.id)
             {

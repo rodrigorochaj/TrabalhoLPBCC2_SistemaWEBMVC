@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
+using Produtos_Sitio.Migrations;
 using Produtos_Sitio.Models;
 
 namespace Produtos_Sitio.Controllers
@@ -48,6 +51,16 @@ namespace Produtos_Sitio.Controllers
         // GET: Vendas/Create
         public IActionResult Create()
         {
+            var conclusao = Enum.GetValues(typeof(Conclusao))
+               .Cast<Conclusao>()
+               .Select(e => new SelectListItem
+               {
+                   Value = e.ToString(),
+                   Text = e.ToString()
+               });
+
+            ViewBag.bagConclusao = conclusao;
+
             ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "nome");
             ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao");
             return View();
@@ -58,18 +71,26 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,clienteid,produtoid,data,quantidade,Total")] Venda venda)
+        public async Task<IActionResult> Create([Bind("id,clienteid,produtoid,data,quantidade,Total,pago")] Venda venda)
         {
-            if (ModelState.IsValid)
+            Produto produto = _context.Produtos.First(model => model.id == venda.produtoid);
+            if (ModelState.IsValid && (produto.quantidade - venda.quantidade) >= 0)
             {
+                produto.quantidade -= venda.quantidade;
                 _context.Add(venda);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            } 
+            else if((produto.quantidade - venda.quantidade) < 0)
+            {
+                ModelState.AddModelError("", "Não há estoque suficiente.");
+                return View();
             }
             ViewData["clienteid"] = new SelectList(_context.Clientes, "id", "nome", venda.clienteid);
             ViewData["produtoid"] = new SelectList(_context.Produtos, "id", "descricao", venda.produtoid);
             return View(venda);
         }
+
 
         // GET: Vendas/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -94,7 +115,7 @@ namespace Produtos_Sitio.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,clienteid,produtoid,data,quantidade,Total")] Venda venda)
+        public async Task<IActionResult> Edit(int id, [Bind("id,clienteid,produtoid,data,quantidade,Total,pago")] Venda venda)
         {
             if (id != venda.id)
             {
@@ -169,5 +190,6 @@ namespace Produtos_Sitio.Controllers
         {
           return _context.Vendas.Any(e => e.id == id);
         }
+
     }
 }

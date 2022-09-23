@@ -1,16 +1,22 @@
 ﻿@model Produtos_Sitio.Models.Usuario
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Usuário - Detalhes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Details</h1>
-
+<div class="btn-topo">
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>
+<h1>Detalhes do Usuário</h1>
+<hr />
 <div>
-    <h4>Usuario</h4>
-    <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.apelido)
         </dt>
@@ -23,15 +29,8 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.login)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.password)
-        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.id" class="btn btn-primary">Editar</a>
 </div>

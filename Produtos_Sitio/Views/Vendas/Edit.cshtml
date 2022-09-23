@@ -1,13 +1,15 @@
 ﻿@model Produtos_Sitio.Models.Venda
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Venda - Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="btn-topo">
+    <a asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>
+<h1>Editar Venda</h1>
 
-<h4>Venda</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,39 +17,21 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="id" />
             <div class="form-group">
-                <label asp-for="clienteid" class="control-label"></label>
-                <select asp-for="clienteid" class="form-control" asp-items="ViewBag.clienteid"></select>
-                <span asp-validation-for="clienteid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="produtoid" class="control-label"></label>
-                <select asp-for="produtoid" class="form-control" asp-items="ViewBag.produtoid"></select>
-                <span asp-validation-for="produtoid" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="data" class="control-label"></label>
-                <input asp-for="data" class="form-control" />
-                <span asp-validation-for="data" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="quantidade" class="control-label"></label>
-                <input asp-for="quantidade" class="form-control" />
-                <span asp-validation-for="quantidade" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Total" class="control-label"></label>
                 <input asp-for="Total" class="form-control" />
                 <span asp-validation-for="Total" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="pago" class="control-label"></label>
+                <select asp-for="pago" class="form-control"></select>
+                <span asp-validation-for="pago" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Atualizar" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
